@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --page-bg: #FAFAF8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--page-bg);
+    color: #1C1C1A;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: #C4A45A;
+    color: #fff;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F5F0E8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C4A45A;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-12 xl:px-16;
+  }
+
+  .section-py {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .heading-display {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  .heading-1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  .heading-2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.375rem, 2vw, 1.875rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+
+  .heading-3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  .label-sm {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .label-md {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-charcoal text-cream;
+    @apply px-8 py-3.5 rounded-none;
+    @apply text-sm font-medium tracking-wide;
+    @apply transition-all duration-300;
+    @apply hover:bg-olive active:scale-[0.98];
+    letter-spacing: 0.05em;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-transparent text-charcoal;
+    @apply border border-charcoal;
+    @apply px-8 py-3.5 rounded-none;
+    @apply text-sm font-medium;
+    @apply transition-all duration-300;
+    @apply hover:bg-charcoal hover:text-cream active:scale-[0.98];
+    letter-spacing: 0.05em;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-transparent text-brown;
+    @apply px-4 py-2 rounded-none;
+    @apply text-sm font-medium;
+    @apply transition-all duration-200;
+    @apply hover:text-charcoal;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-gold text-white;
+    @apply px-8 py-3.5 rounded-none;
+    @apply text-sm font-medium;
+    @apply transition-all duration-300;
+    @apply hover:bg-gold-light active:scale-[0.98];
+    letter-spacing: 0.05em;
+  }
+
+  .divider {
+    @apply w-12 h-px bg-gold my-6;
+  }
+
+  .divider-full {
+    @apply w-full h-px bg-stone;
+  }
+
+  .product-card {
+    @apply relative bg-beige overflow-hidden cursor-pointer;
+    @apply transition-shadow duration-500;
+    @apply hover:shadow-product-hover;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 text-2xs font-semibold tracking-widest uppercase;
+  }
+
+  .badge-gold {
+    @apply badge bg-gold text-white;
+  }
+
+  .badge-new {
+    @apply badge bg-charcoal text-cream;
+  }
+
+  .badge-sale {
+    @apply badge bg-olive text-cream;
+  }
+
+  .input-field {
+    @apply w-full bg-cream border border-stone px-4 py-3;
+    @apply text-sm text-charcoal placeholder-sand;
+    @apply focus:outline-none focus:border-charcoal;
+    @apply transition-colors duration-200;
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-charcoal;
+    @apply transition-all duration-300;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    background: linear-gradient(90deg, #F5F0E8 25%, #EDE9E0 50%, #F5F0E8 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
